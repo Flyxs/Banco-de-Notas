@@ -1,5 +1,6 @@
 import os
 import time
+from teste_de_codigo import fmt_nome
 
 os.system('clear')
 
@@ -29,11 +30,12 @@ class Banco_de_notas:
 estudantes = []
 
 while True:
-    escolha = str(input(f'O que gostaria de fazer? \n [1]Adicionar um estudante  [2]Consultar Nota Pessal  [3]Exibir Resultado da turma  [4]Adcionar Notas  [q]Sair\n'))
+    escolha = str(input(f'O que gostaria de fazer? \n [1]Adicionar um estudante \n [2]Consultar Nota Pessal \n [3]Exibir Resultado da turma \n [4]Adcionar Notas \n [q]Sair\n'))
     os.system('clear')
     
     if escolha == '1':
         nome = str(input('Qual o nome do estudante? '))
+        fmt_nome(nome)
         matricula = str(input('Qual a matricula? '))
         estudantes.append(Banco_de_notas(nome,matricula))
         print(f'O estudante {nome} foi adcionado com sucesso! \n')
@@ -55,6 +57,7 @@ while True:
                 print(f'Estudante não encontrado, tente novamente.')
                 
     elif escolha == '3':
+        print('Alunos cadastrados: \n')
         for estudante in estudantes:
             print(estudante)
         print()
@@ -70,6 +73,9 @@ while True:
                     estudante.Adcionar_nota(nota)
         if not encontrado:
             print('Estudante não encontrado')
+            
+        time.sleep(2)
+        os.system('clear')
         
         
     elif escolha == 'q':
